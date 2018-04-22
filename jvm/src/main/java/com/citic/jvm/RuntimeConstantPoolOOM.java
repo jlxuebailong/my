@@ -18,6 +18,8 @@ public class RuntimeConstantPoolOOM {
             stringList.add(String.valueOf(i++).intern());
     }*/
 
+    //运行结果: JDK1.7之前都是false,JDK1.7开始是true和false
+    //JDK1.7之前intern方法会进行复制动作,但JDK1.7开始就不执行复制了
     public static void main(String[] args){
         String str1 = new StringBuilder("计算机").append("软件").toString();
         System.out.println(str1.intern() == str1);
