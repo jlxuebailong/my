@@ -9,7 +9,7 @@
         <module name="es" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="es" target="1.7" />
       <module name="my" target="1.7" />
     </bytecodeTargetLevel>

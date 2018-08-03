@@ -3,13 +3,20 @@ package com.citic.es;
 import com.google.gson.JsonObject;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.action.get.MultiGetRequest;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.junit.After;
 import org.junit.Before;
@@ -120,8 +127,26 @@ public class ElasticsearchTest1 {
 
     @Test
     public void testGetData() {
-        GetResponse getResponse = client.prepareGet("blog", "article", "2").get();
+        GetResponse getResponse = client.prepareGet("blog", "article", "1").get();
         System.out.println("索引库的数据:" + getResponse.getSourceAsString());
+
+        QueryBuilder queryBuilder=QueryBuilders.multiMatchQuery("张三","userName","msg");
+
+        SearchRequestBuilder builder = client.prepareSearch("blog");
+        builder.setQuery(queryBuilder);
+        System.out.println(builder.toString());
+        SearchResponse searchResponse = builder.execute().actionGet();
+        SearchHits hits = searchResponse.getHits();
+        System.out.println("查到记录数："+hits.getTotalHits());
+        SearchHit[] searchHists = hits.getHits();
+        if(searchHists.length>0){
+            for(SearchHit hit:searchHists){
+                String userName =  (String) hit.getSource().get("userName");
+                String sendDate =  (String) hit.getSource().get("sendDate");
+                String msg =  (String) hit.getSource().get("msg");
+                System.out.format("%s, %s , %s \n",userName,sendDate,msg);
+            }
+        }
     }
 
     @Test
@@ -146,4 +171,6 @@ public class ElasticsearchTest1 {
         System.out.println("deleteResponse索引名称:" + deleteResponse.getIndex() + "\n deleteResponse类型:" + deleteResponse.getType()
                 + "\n deleteResponse文档ID:" + deleteResponse.getId() + "\n当前实例deleteResponse状态:" + deleteResponse.status());
     }
+
+
 }
