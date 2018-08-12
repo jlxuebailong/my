@@ -16,7 +16,7 @@ import org.bouncycastle.util.encoders.Base64;
 
 public class SM2Utils
 {
-
+	private static byte[] USER_ID = "minyintech.com".getBytes();
 
 	//生成随机秘钥对
 	public static MyKeyPair generateKeyPair(){
@@ -29,6 +29,8 @@ public class SM2Utils
 
 		String privateKey1 = Util.byteToHex(privateKey.toByteArray());
 		String publicKey1 = Util.byteToHex(publicKey.getEncoded());
+		System.out.println("priKey : "+privateKey1);
+		System.out.println("pubKey : "+publicKey1);
 		return new MyKeyPair(privateKey1, publicKey1);
 
 	}
@@ -206,6 +208,23 @@ public class SM2Utils
 		return sm2Result.r.equals(sm2Result.R);
 	}
 
+	public static byte[] sign(String prvKey, byte[] sourceData){
+		try {
+			return SM2Utils.sign(USER_ID,Util.hexToByte(prvKey), sourceData);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public static boolean verifySign(String pubKey,byte[] sourceData,byte[] sign ){
+		try {
+			return SM2Utils.verifySign(USER_ID, Util.hexToByte(pubKey), sourceData, sign);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public static void main(String[] args) throws Exception
 	{
 
@@ -216,41 +235,24 @@ public class SM2Utils
 		byte[] sourceData = plainText.getBytes();
 
 		// 国密规范测试私钥
-		String prik = "128B2FA8BD433C6C068C8D803DFF79792A519A55171B1B650C23661D15897263";
-		String prikS = new String(Base64.encode(Util.hexToByte(prik)));
-		System.out.println("prikS: " + prikS);
-		System.out.println("");
+		String prik = myKeyPair.getPrivateKey();
+		// 国密规范测试公钥
+		String pubk = myKeyPair.getPublicKey();
 
 		// 国密规范测试用户ID
-		String userId = "ALICE123@YAHOO.COM";
+		byte[] sign = SM2Utils.sign(prik, sourceData);
+		System.out.println("sign: " + Util.getHexString(sign));
 
-		System.out.println("ID: " + Util.getHexString(userId.getBytes()));
-		System.out.println("");
-
-		System.out.println("签名: ");
-		byte[] c = SM2Utils.sign(userId.getBytes(), Base64.decode(prikS.getBytes()), sourceData);
-		System.out.println("sign: " + Util.getHexString(c));
-		System.out.println("");
-
-		// 国密规范测试公钥
-		String pubk = "040AE4C7798AA0F119471BEE11825BE46202BB79E2A5844495E97C04FF4DF2548A7C0240F88F1CD4E16352A73C17B7F16F07353E53A176D684A9FE0C6BB798E857";
-		String pubkS = new String(Base64.encode(Util.hexToByte(pubk)));
-		System.out.println("pubkS: " + pubkS);
-		System.out.println("");
-
-
-		System.out.println("验签: ");
-		boolean vs = SM2Utils.verifySign(userId.getBytes(), Base64.decode(pubkS.getBytes()), sourceData, c);
+		boolean vs = verifySign(pubk, sourceData, sign);
 		System.out.println("验签结果: " + vs);
-		System.out.println("");
 
 		System.out.println("加密: ");
-		byte[] cipherText = SM2Utils.encrypt(Base64.decode(pubkS.getBytes()), sourceData);
+		byte[] cipherText = SM2Utils.encrypt(Util.hexToByte(pubk), sourceData);
+		System.out.println("plainText:"+plainText);
 		System.out.println(new String(Base64.encode(cipherText)));
-		System.out.println("");
 
 		System.out.println("解密: ");
-		plainText = new String(SM2Utils.decrypt(Base64.decode(prikS.getBytes()), cipherText));
+		plainText = new String(SM2Utils.decrypt(Util.hexToByte(prik), cipherText));
 		System.out.println(plainText);
 
 	}
