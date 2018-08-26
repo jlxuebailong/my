@@ -14,7 +14,7 @@
     <module>es2</module>
     <module>jvm</module>
     <module>webservice</module>
-    <module>struct</module>
+    <module>security</module>
   </modules>
 
   <name>my</name>
@@ -34,8 +34,6 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-
-
 
   </dependencies>
 
