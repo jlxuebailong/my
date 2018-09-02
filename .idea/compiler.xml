@@ -26,6 +26,8 @@
         <module name="es2" />
         <module name="jdk8" />
         <module name="jvm" />
+        <module name="pattern" />
+        <module name="security" />
         <module name="webservice" />
       </profile>
     </annotationProcessing>
@@ -36,6 +38,8 @@
       <module name="jdk8" target="1.8" />
       <module name="jvm" target="1.8" />
       <module name="my" target="1.7" />
+      <module name="pattern" target="1.8" />
+      <module name="security" target="1.7" />
       <module name="struct" target="1.7" />
       <module name="webservice" target="1.7" />
     </bytecodeTargetLevel>
