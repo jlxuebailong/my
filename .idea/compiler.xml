@@ -22,26 +22,30 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="algorithm" />
         <module name="es" />
         <module name="es2" />
         <module name="jdk8" />
         <module name="jvm" />
+        <module name="net" />
         <module name="pattern" />
         <module name="security" />
         <module name="webservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="algorithm" target="1.8" />
       <module name="component" target="1.7" />
       <module name="es" target="1.7" />
       <module name="es2" target="1.7" />
       <module name="jdk8" target="1.8" />
       <module name="jvm" target="1.8" />
-      <module name="my" target="1.7" />
+      <module name="my" target="1.8" />
+      <module name="net" target="1.8" />
       <module name="pattern" target="1.8" />
-      <module name="security" target="1.7" />
+      <module name="security" target="1.8" />
       <module name="struct" target="1.7" />
-      <module name="webservice" target="1.7" />
+      <module name="webservice" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
