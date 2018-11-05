@@ -16,6 +16,7 @@
     <module>webservice</module>
     <module>security</module>
     <module>pattern</module>
+    <module>algorithm</module>
   </modules>
 
   <name>my</name>

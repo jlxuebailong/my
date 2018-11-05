@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>构造模式(New)</title>
+        <script src="jquery.js" type="text/javascript" ></script>
+    </head>
+<body>
+<h1>构造模式(New)</h1>
+
+
+<script>
+   function Car(model,year,miles) {
+       this.model = model;
+       this.year = year;
+       this.miles = miles;
+   }
+
+    Car.prototype.output=function () {
+        return this.model + "走了" + this.miles + "公里";
+    }
+
+   //方法1：作为函数调用
+//   Car("大叔", 2009, 20000);  //添加到window对象上
+//   console.log(window.output());
+
+   //方法2：在另外一个对象的作用域内调用
+//   var o = new Object();
+//   Car.call(o, "Dudu", 2010, 5000);
+//   console.log(o.output());
+   //该代码的方法1有点特殊，如果不适用new直接调用函数的话，this指向的是全局对象window，我们来验证一下：
+   //作为函数调用
+   var tom = Car("大叔", 2009, 20000);
+   console.log(typeof tom); // "undefined"
+ //  console.log(window.output()); // "大叔走了20000公里"
+   //这时候对象tom是undefined，而window.output()会正确输出结果，而如果使用new关键字则没有这个问题，验证如下：
+   //使用new 关键字
+   var tom = new Car("大叔", 2009, 20000);
+   console.log(typeof tom); // "object"
+   console.log(tom.output()); // "大叔走了20000公里"
+
+
+</script>
+</body>
+</html>
