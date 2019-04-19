@@ -14,6 +14,7 @@ public class MyTest {
     public void testClassLoader() throws IOException, IllegalAccessException, InstantiationException {
         //读取本地的class文件内的字节码，转换成字节码数组
         File file = new File(".");
+
         String path = file.getCanonicalPath();
         InputStream input = new FileInputStream(path+"\\target\\classes\\com\\citic\\pattern\\proxy\\Programmer.class");
         byte[] result = new byte[1024];
