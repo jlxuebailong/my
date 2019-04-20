@@ -1,4 +1,4 @@
-package com.citic.net.algo;
+package com.my.algo;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;

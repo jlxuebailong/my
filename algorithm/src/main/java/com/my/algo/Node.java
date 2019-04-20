@@ -1,4 +1,4 @@
-package com.citic.net.algo;
+package com.my.algo;
 
 /**
  * Created by gavin on 2018/10/3.
