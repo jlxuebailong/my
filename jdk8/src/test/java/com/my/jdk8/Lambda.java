@@ -1,4 +1,4 @@
-package com.icitic.jdk8;
+package com.my.jdk8;
 
 import org.junit.Test;
 
