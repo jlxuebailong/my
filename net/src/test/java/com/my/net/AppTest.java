@@ -1,4 +1,4 @@
-package com.citic.net;
+package com.my.net;
 
 import static org.junit.Assert.assertTrue;
 

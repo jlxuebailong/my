@@ -1,4 +1,4 @@
-package com.citic.net;
+package com.my.net;
 
 import java.io.*;
 import java.net.ServerSocket;
