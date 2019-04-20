@@ -14,7 +14,11 @@
     <module>es2</module>
     <module>jvm</module>
     <module>webservice</module>
-    <module>struct</module>
+    <module>algorithm</module>
+    <module>commonlab</module>
+    <module>net</module>
+    <module>pattern</module>
+    <module>security</module>
   </modules>
 
   <name>my</name>
