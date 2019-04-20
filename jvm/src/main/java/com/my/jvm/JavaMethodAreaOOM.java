@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

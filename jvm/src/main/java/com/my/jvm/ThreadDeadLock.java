@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 /**
  * Created by gavin on 2018/7/8.

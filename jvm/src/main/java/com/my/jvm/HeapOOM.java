@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 import java.util.ArrayList;
 import java.util.List;

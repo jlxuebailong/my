@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 /**
  * VM argument: -verbose:gc -Xss160k -XX:+PrintGCDetails

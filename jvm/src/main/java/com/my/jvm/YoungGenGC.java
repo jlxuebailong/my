@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 /**
  * VM argument: -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8

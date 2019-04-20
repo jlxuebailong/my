@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 import sun.misc.Unsafe;
 

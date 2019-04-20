@@ -1,4 +1,4 @@
-package com.icitic.jvm;
+package com.my.jvm;
 
 /**
  * -Xss2M：设置每个线程的堆栈大小
