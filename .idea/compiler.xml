@@ -22,14 +22,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="algorithm" />
         <module name="es" />
         <module name="es2" />
         <module name="jdk8" />
         <module name="jvm" />
-        <module name="net" />
-        <module name="pattern" />
-        <module name="security" />
         <module name="webservice" />
       </profile>
     </annotationProcessing>
