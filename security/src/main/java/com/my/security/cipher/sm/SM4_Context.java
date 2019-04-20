@@ -1,4 +1,4 @@
-package com.my.common.cipher.sm;
+package com.my.security.cipher.sm;
 
 public class SM4_Context
 {

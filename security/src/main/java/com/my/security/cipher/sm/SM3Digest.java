@@ -1,4 +1,4 @@
-package com.my.common.cipher.sm;
+package com.my.security.cipher.sm;
 
 import org.bouncycastle.util.encoders.Hex;
 

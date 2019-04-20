@@ -1,4 +1,4 @@
-package com.my.common.cipher.sm;
+package com.my.security.cipher.sm;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
