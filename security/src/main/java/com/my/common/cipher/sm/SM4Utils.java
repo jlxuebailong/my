@@ -1,4 +1,4 @@
-package com.citic.cipher.sm;
+package com.my.common.cipher.sm;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

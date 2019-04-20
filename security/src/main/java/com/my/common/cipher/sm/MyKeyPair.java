@@ -1,4 +1,4 @@
-package com.citic.cipher.sm;
+package com.my.common.cipher.sm;
 
 public class MyKeyPair {
 	private String privateKey;

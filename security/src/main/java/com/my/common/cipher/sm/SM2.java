@@ -1,4 +1,4 @@
-package com.citic.cipher.sm;
+package com.my.common.cipher.sm;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
