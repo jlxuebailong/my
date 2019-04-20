@@ -1,4 +1,4 @@
-package com.icitic.es;
+package com.my.es;
 
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;

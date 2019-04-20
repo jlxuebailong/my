@@ -1,4 +1,4 @@
-package com.icitic.es;
+package com.my.es;
 
 import com.google.gson.JsonObject;
 import org.elasticsearch.action.delete.DeleteResponse;
