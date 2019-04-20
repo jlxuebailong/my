@@ -1,4 +1,4 @@
-package com.citic.cipher.sm;
+package com.citic.net.cipher.sm;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

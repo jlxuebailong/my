@@ -1,10 +1,9 @@
-package com.citic.cipher.sm;
+package com.citic.net.cipher.sm;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.security.KeyPair;
 import java.util.Enumeration;
 
 import org.bouncycastle.asn1.*;
