@@ -1,4 +1,4 @@
-package com.icitic.pattern.proxy;
+package com.my.pattern.proxy;
 
 import org.junit.Test;
 

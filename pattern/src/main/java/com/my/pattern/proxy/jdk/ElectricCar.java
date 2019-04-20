@@ -1,4 +1,4 @@
-package com.icitic.pattern.proxy.jdk;
+package com.my.pattern.proxy.jdk;
 
 public class ElectricCar implements Vehicle,Rechargable {
     @Override

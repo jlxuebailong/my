@@ -1,6 +1,6 @@
-package com.icitic.pattern.javassist;
+package com.my.pattern.javassist;
 
-import com.icitic.pattern.proxy.MyClassLoader;
+import com.my.pattern.proxy.MyClassLoader;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;

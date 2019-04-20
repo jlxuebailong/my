@@ -1,4 +1,4 @@
-package com.icitic.pattern.proxy;
+package com.my.pattern.proxy;
 
 public class Programmer {
     public void code()

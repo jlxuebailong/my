@@ -1,4 +1,4 @@
-package com.icitic.pattern.memento;
+package com.my.pattern.memento;
 
 /**
  * Created by gavin on 2018/10/24.

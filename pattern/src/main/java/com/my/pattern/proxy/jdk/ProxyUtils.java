@@ -1,4 +1,4 @@
-package com.icitic.pattern.proxy.jdk;
+package com.my.pattern.proxy.jdk;
 
 import sun.misc.ProxyGenerator;
 
