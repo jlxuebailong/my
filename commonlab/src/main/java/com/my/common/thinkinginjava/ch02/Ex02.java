@@ -5,24 +5,45 @@ package com.my.common.thinkinginjava.ch02;
  */
 public class Ex02 {
 
-    class ATypeName {
-        private double value;
-        public ATypeName(){}
-        public ATypeName(double value) {
+    final class ANumberType extends Number{
+        private final int value;
+
+        public ANumberType(int value) {
             this.value = value;
         }
-        public double getValue(){
-            return Math.round(this.value);
+
+        @Override
+        public int intValue() {
+            return value;
+        }
+
+        @Override
+        public long longValue() {
+            return (long)value;
+        }
+
+        @Override
+        public float floatValue() {
+            return (float)value;
+        }
+
+        @Override
+        public double doubleValue() {
+            return (double)value;
+        }
+
+        public int getValue(){
+            return this.value;
         }
     }
 
-    public ATypeName buildATypeName(double value){
-        return new ATypeName(value);
+    public ANumberType buildANumberType(int value){
+        return new ANumberType(value);
     }
 
     public static void main(String[] args){
         Ex02  ex = new Ex02();
-        ATypeName typeName = ex.buildATypeName(0.3d);
-        System.out.println(typeName.getValue());
+        ANumberType aNumberType = ex.buildANumberType(4);
+        System.out.println(aNumberType.getValue());
     }
 }
