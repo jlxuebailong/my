@@ -1,5 +1,7 @@
 package com.my.common.thinkinginjava.ch03;
 
+import java.util.Random;
+
 import static com.my.common.thinkinginjava.util.Print.*;
 
 /**
@@ -28,6 +30,16 @@ public class Ex02 {
         //f方法修改了t1的value
         f(t1);
         println("4. " + t1.value + " , " + t2.value);
+
+        //种子数字47, 据说是一个"魔幻数字"
+        Random random = new Random(47);
+        println(random.nextInt(100) + 1);
+
+        Integer x = new Integer(1);
+        Integer y = new Integer(1);
+        println(x == y);
+        println(x.equals(y));
+
     }
 
 }
