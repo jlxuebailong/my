@@ -13,7 +13,6 @@
     <module>jdk8</module>
     <module>es2</module>
     <module>jvm</module>
-    <module>webservice</module>
     <module>algorithm</module>
     <module>commonlab</module>
     <module>net</module>
