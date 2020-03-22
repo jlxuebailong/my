@@ -81,3 +81,33 @@ print(shoplist)
 shoplist[0] = 'caca'
 print(shoplist)
 
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def sayHi(self):
+        print('Hi',self.name)
+
+per = Person('caca')
+per.sayHi()
+
+
+def reverse(text):
+    return ''.join(e for e in text if e.isalnum())[::-1]
+
+print(reverse('Aabcd, ef,!gD'))
+
+
+
+
+
+f = open('/Users/gavin/logs/fuck.txt', 'r')
+while True:
+    line = f.readline()
+    if len(line) == 0:
+        break
+    print(line, end='')
+f.close()
+
+
+
+
