@@ -51,14 +51,17 @@ public class Kitchen{
         public  void cook(){
             synchronized(this.menu) {
                 try {
-                    //如果有先洗好的，就直接煮
-                    if (this.menu.getReady()) {
-                        System.out.println("Cook... for (" + this.menu.getMenuName() + ")");
-                    } else {
+                    //wait的惯用写法，
+                    // 一是判断notifyAll是否和自己有关系，
+                    // 二是为了并发时发生线程切换而发生信号丢失
+                    while(!this.menu.getReady()){
                         //还没洗好就先坐一下
                         System.out.println("Wait for (" + this.menu.getMenuName() + ")");
                         this.menu.wait();
-                        System.out.println("Cook after watch for (" + this.menu.getMenuName() + ")");
+                    }
+                    //如果有先洗好的，就直接煮
+                    if (this.menu.getReady()) {
+                        System.out.println("Cook... for (" + this.menu.getMenuName() + ")");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
