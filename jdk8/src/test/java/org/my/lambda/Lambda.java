@@ -1,12 +1,18 @@
-package com.my.jdk8;
+package org.my.lambda;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.stream.Collectors.joining;
 
 /**
  * Created by gavin on 2018/4/21.
@@ -56,6 +62,7 @@ public class Lambda {
         features.forEach(System.out :: println);
     }
 
+
     private static void filter(List<String> strs, Predicate condition){
         /*for(String str : strs){
             if(condition.test(str)){
@@ -67,6 +74,7 @@ public class Lambda {
         strs.stream().filter(condition).forEach((s2)->System.out.println(s2 + " "));
 
     }
+
 
     @Test
     public void test3(){
@@ -91,7 +99,11 @@ public class Lambda {
         Predicate<String> fourLetterLong = (s) -> s.length() == 4;
         languages.stream().filter(startsWithJ.and(fourLetterLong))
                 .forEach((s)->System.out.print("Name, which starts with 'J' and four letter long is : " + s));
+
+
     }
+
+
 
     /**
      * Java 8中使用lambda表达式的Map和Reduce示例
@@ -100,14 +112,39 @@ public class Lambda {
     public void test4(){
         List<Double> costBeforeTax = Arrays.asList(100d, 200d, 300d, 400d, 500d);
         costBeforeTax.stream()
-                .map((cost)->cost*1.12)
-                .forEach(System.out::println);
+                .map( (cost) -> cost + 1.12 )
+                .forEach( System.out :: println );
 
         Object bill = costBeforeTax.stream()
-                .map((cost) -> cost * 1.12)
+                .map((cost) -> cost + 1.12)
                 .reduce((sum,cost)-> sum + cost).get();
 
         System.out.println("Bill :" + bill);
+    }
+
+    @Test
+    public void testTemp(){
+        List<Integer> features = new ArrayList<>();
+        for(int i = 1; i <= 1000000; i++) {
+            features.add(i);
+        }
+
+        StopWatch sw = new StopWatch();
+        sw.start();
+        int result2 = 0;
+        for(int n : features){
+            result2 += n;
+        }
+        sw.stop();
+        System.out.println("StopWatch Time: "+sw.getTime()+"ms");
+        sw.reset();
+        sw.start();
+        int result1 = features.parallelStream().reduce( (sum, n) -> sum += n ).get();
+        sw.stop();
+        System.out.println("StopWatch Time: "+sw.getTime()+"ms");
+
+        System.out.println(result1);
+        System.out.println(result2);
     }
 
     //通过过滤创建一个String列表
@@ -119,7 +156,7 @@ public class Lambda {
 
         // 将字符串换成大写并用逗号链接起来
         List<String> G7 = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.","Canada");
-        String G7Countries = G7.stream().map( s -> s.toUpperCase() ).collect(Collectors.joining(","));
+        String G7Countries = G7.stream().map( s -> s.toUpperCase() ).collect(joining(","));
         System.out.println(G7Countries);
 
         // 去重
